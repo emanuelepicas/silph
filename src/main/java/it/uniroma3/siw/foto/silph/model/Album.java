@@ -1,5 +1,6 @@
 package it.uniroma3.siw.foto.silph.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
+
+
 @Entity
 public class Album {
 	@Id
@@ -19,11 +22,19 @@ public class Album {
 	
 	
 	
-	
+	@ManyToOne
+	private Fotografo fotografo;
 	
 	@OneToMany(mappedBy="album")
 	@MapKey(name="id")
 	private Map<Long,Foto> foto;
+
+	public Album(String nome, Fotografo fotografo) {
+		this.nome = nome;
+		this.fotografo = fotografo;
+		this.foto = new HashMap<>();
+
+	}
 
 	public Long getId() {
 		return id;

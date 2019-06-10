@@ -12,9 +12,7 @@ public class Foto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
-    
-	@ManyToOne
-	private Fotografo fotografo;
+
 	
 	@ManyToOne
 	private Album album;

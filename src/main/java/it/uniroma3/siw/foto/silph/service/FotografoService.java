@@ -12,18 +12,27 @@ import org.springframework.transaction.annotation.Transactional;
 import it.uniroma3.siw.foto.silph.model.Fotografo;
 import it.uniroma3.siw.foto.silph.repository.FotografoRepository;
 
+import java.util.List;
+
 @Service
 public class FotografoService {
     @Autowired
     private FotografoRepository fotografoRepository;
 
-    @Transactional
-    public Fotografo inserisci(Fotografo fotografo) {
-    return this.fotografoRepository.save(fotografo);
-}
 
 public Fotografo fotografoPerId(Long id){
     return this.fotografoRepository.findById(id).get();
+}
+
+@Transactional
+public Fotografo inserisci(Fotografo fotografo){
+        return fotografoRepository.save(fotografo);
+
+}
+
+@Transactional
+public List<Fotografo> tutti(){
+        return (List<Fotografo>) this.fotografoRepository.findAll();
 }
 
 }

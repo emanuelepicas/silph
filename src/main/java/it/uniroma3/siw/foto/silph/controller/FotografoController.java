@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import it.uniroma3.siw.foto.silph.model.Fotografo;
 import it.uniroma3.siw.foto.silph.service.FotografoService;
@@ -29,19 +26,31 @@ public class FotografoController {
         this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.fotografoService.inserisci(fotografo);
-			return "/fotografo/" + fotografo.getId();
+			model.addAttribute("fotografi",this.fotografoService.tutti());
+			return "/fotografi";
 		}else {
-			return "fotografoForm.html";
+			return "fotografoForm";
 		}
     }
     
     @RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
 	public String getStudente(@PathVariable ("id") Long id, Model model) {
+        if(id!=null){
 			model.addAttribute("fotografo", this.fotografoService.fotografoPerId(id));
-			return "fotografo.html";
+			return "fotografo";}
+        else {
+            model.addAttribute("fotografi", this.fotografoService.tutti());
+            return "fotografi";
+        }
 
 
     }
+    @GetMapping("/fotografi")
+    public String listaFotografi(Model model){
+        model.addAttribute("fotografi", this.fotografoService.tutti());
+        return "fotografi";
+    }
+
     @RequestMapping("/addFotografo")
     public String addFotografo(Model model){
         model.addAttribute("fotografo", new Fotografo());

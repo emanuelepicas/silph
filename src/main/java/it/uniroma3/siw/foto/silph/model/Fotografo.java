@@ -1,13 +1,9 @@
 package it.uniroma3.siw.foto.silph.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MapKey;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Fotografo {
@@ -17,13 +13,21 @@ public class Fotografo {
 	private String nome;
 	private String cognome;
 	
-	@OneToMany(mappedBy="fotografo")
+	@OneToMany(mappedBy="fotografo", cascade = CascadeType.ALL)
 	@MapKey(name="id")
 	private Map<Long,Album> album;
-	
-	@OneToMany(mappedBy="fotografo")
-	@MapKey(name="id")
-	private Map<Long,Foto> foto;
+
+	public Fotografo(String nome, String cognome, String email) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.album= new HashMap<>();
+		Album generale = new Album("Tutte le foto", this);
+		this.album.put(generale.getId(), generale);
+	}
+	public Fotografo(){
+
+	}
+
 
 	public String getNome() {
 		return nome;
