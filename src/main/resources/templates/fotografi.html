@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Portale Silh</title>
+    <link rel="stylesheet" href="fotografiCss.css" />
+</head>
 <body>
 <div>
     <h4>Fotografi</h4>
-    <ul>
+
+    <ol>
         <!-- Finch� trovi uno studente, stampa una lista puntata -->
         <li th:each="fotografo : ${fotografi}">
             <!-- Viene stampato un link -->
@@ -17,7 +23,7 @@
                     th:href="@{'/fotografo' + '/' + ${fotografo.id}}"
                     th:text="${fotografo.nome} + ' ' + ${fotografo.cognome}"> paolo merialdo</a>
         </li>
-    </ul>
+    </ol>
 </div>
 </body>
 </html>

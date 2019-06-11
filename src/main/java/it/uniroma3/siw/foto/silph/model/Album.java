@@ -3,14 +3,7 @@ package it.uniroma3.siw.foto.silph.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapKey;
-import javax.persistence.OneToMany;
-
+import javax.persistence.*;
 
 
 @Entity
@@ -18,6 +11,7 @@ public class Album {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(nullable = false)
 	private String nome;
 	
 	
@@ -28,6 +22,8 @@ public class Album {
 	@OneToMany(mappedBy="album")
 	@MapKey(name="id")
 	private Map<Long,Foto> foto;
+
+	public Album(){}
 
 	public Album(String nome, Fotografo fotografo) {
 		this.nome = nome;
