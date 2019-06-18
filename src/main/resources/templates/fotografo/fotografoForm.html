@@ -10,7 +10,7 @@
 <div>
     <h4>Inserisci i dati di un Fotografo</h4>
 </div>
-<form th:action="@{/fotografo}" method="POST" th:object="${fotografo}">
+<form th:action="@{/admin/fotografo}" method="POST" th:object="${fotografo}">
     <table>
         <tr>
             <td>Nome:</td>
@@ -29,6 +29,7 @@
         </tr>
     </table>
 </form>
+<h5><a href="/admin/welcome">Torna alla home</a></h5>
 </body>
 </html>
 <!--  -->

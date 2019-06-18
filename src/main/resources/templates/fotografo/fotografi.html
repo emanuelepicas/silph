@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Portale Silh</title>
+    <link rel="stylesheet" href="/css/fotografiCss.css" />
+</head>
+<body>
+<div>
+    <h4>Fotografi</h4>
+
+    <ol>
+        <!-- Finch� trovi uno studente, stampa una lista puntata -->
+        <li th:each="fotografo : ${fotografi}">
+            <!-- Viene stampato un link -->
+            <!-- Il link lo costruiamo noi, con il nome dello studente,
+                abbiamo indicato che sia il controller a gestire la richiesta,
+                con una get-->
+            <!-- Al posto di paolo (valore fittizio),
+                compare ci� che ho specificato in th:text -->
+            <a
+                    th:href="@{'/admin/fotografo' + '/' + ${fotografo.id}}"
+                    th:text="${fotografo.nome} + ' ' + ${fotografo.cognome}"> paolo merialdo</a>
+        </li>
+    </ol>
+</div>
+<h5><a href="/admin/welcome">Torna alla home</a></h5>
+</body>
+</html>

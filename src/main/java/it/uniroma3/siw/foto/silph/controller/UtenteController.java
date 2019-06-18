@@ -19,11 +19,11 @@ public class UtenteController {
     @GetMapping("/utente/fotografi")
     public String listaFotografi (Model model){
         model.addAttribute("fotografi", this.fotografoService.tutti());
-        return "fotografi";
+        return "utente/fotografiUtente";
     }
     @GetMapping("/utente")
     public String vistaUtente (Model model){
         model.addAttribute("fotografi", this.fotografoService.tutti());
-        return "utente";
+        return "utente/utente";
     }
 }

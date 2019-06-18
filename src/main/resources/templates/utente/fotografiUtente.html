@@ -20,7 +20,7 @@
             <!-- Al posto di paolo (valore fittizio),
                 compare ci� che ho specificato in th:text -->
             <a
-                    th:href="@{'/fotografo' + '/' + ${fotografo.id}}"
+                    th:href="@{'/admin/fotografo' + '/' + ${fotografo.id}}"
                     th:text="${fotografo.nome} + ' ' + ${fotografo.cognome}"> paolo merialdo</a>
         </li>
     </ol>
