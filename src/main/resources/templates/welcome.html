@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Portale Silph</title>
+    <link rel="stylesheet" href="../css/welcomeCss.css" />
+</head>
+<body>
+<div>
+    <h4>Portale Silph</h4>
+</div>
+<h4>Benvenuto Amministratore, <span th:utext="${username}"></span>!</h4>
+<div>
+
+    <a href="/addFotografo">Aggiungi un Fotografo</a>
+
+</div>
+
+<div>
+
+    <a href="/admin">Aggiungi album ad un fotografo esistente</a>
+
+</div>
+
+<div>
+
+    <a href="/admin">Aggiungi foto ad un fotografo esistente</a>
+
+</div>
+
+
+<div>
+
+    <a href="/fotografi">Guarda tutti i fotografi nel portale</a>
+
+</div>
+<h5><a href="/logout">Disconnettiti</a></h5>
+
+</body>
+</html>

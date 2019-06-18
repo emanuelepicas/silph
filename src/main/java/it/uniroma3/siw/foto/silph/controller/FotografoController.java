@@ -90,6 +90,12 @@ public class FotografoController {
             model.addAttribute("fotografo", new Fotografo());
             return "fotografoForm";
         }
+
+    @RequestMapping("/admin/welcome")
+    public String vistaInizialeAmministratore(Model model){
+
+                return "welcome";
+    }
     }
 
 
