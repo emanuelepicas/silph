@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Gallery Fotografie</title>
+    <title>Galleria Fotografie</title>
 </head>
 <body>
 <div class="title">
-    <h1>Fotografie della Silph Spa</h1>
+    <h4>Fotografie della Silph</h4>
     <a  th:href="@{/utente/shoppingCart}">carrello immagini</a>
 </div>
-<div style="padding-left: 300px">
-    <i>Seleziona le foto che vorresti utilizzare cliccando sul bottone a lato immagine</i>
+<div>
+    <i>Aggiungi le immagini che vuoi nel carello</i>
 </div>
 <br />
 <br />
 
 <div th:each="fotoPath : ${files_galleria}">
-    <img class="gallery_image" th:src="@{${fotoPath}}">
+    <img class="galleria_imagine" th:src="@{${fotoPath}}">
 
     <form style="float: left; padding-top: 40px; padding-left: 60px;"
-          th:action="@{shoppingCart/aggiungiAlCarrelloDallaGallery}">
-        <input style="display: none;" type="text" th:value="${fotoPath}" name="fotoPath">
+          th:action="@{/utente/shoppingCart/aggiungiAlCarrelloDallaGallery}">
+        <input style="display: none;"  type="text" th:value="${fotoPath}" name="fotoPath">
         <button type="submit">Aggiungi immagine</button>
     </form>
 </div>

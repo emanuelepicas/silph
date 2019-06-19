@@ -23,8 +23,6 @@ public class FotografoControllerAdmin {
     @Autowired
     private FotografoService fotografoService;
 
-    @Autowired
-    private AlbumService albumService;
 
     @Autowired
     private FotografoValidator fotografoValidator;
@@ -43,7 +41,7 @@ public class FotografoControllerAdmin {
     }
 
     @RequestMapping(value = "/admin/fotografo/{id}", method = RequestMethod.GET)
-    public String getStudente(@PathVariable("id") Long id, Model model) {
+    public String getFotografo(@PathVariable("id") Long id, Model model) {
         if (id != null) {
             model.addAttribute("fotografo", this.fotografoService.fotografoPerId(id));
             return "fotografo/fotografo";

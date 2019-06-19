@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Fotografia Salvata</title>
+</head>
+<body>
+<div><h3 class="ok_message">Fotografia correttamente salvata!</h3></div>
+<div th:text="'Id: '+${foto.id}">foto_message_id</div>
+<div th:text="'Nome: '+${foto.nome}">foto_message_nome</div>
+<br/>
+<div>Vuoi aggiungere un'altra fotografia? <a th:href="@{/addFotografia}">Sì!</a></div>
+<h5><a href="/admin/welcome">Torna alla home</a></h5>
+</body>
+</html>

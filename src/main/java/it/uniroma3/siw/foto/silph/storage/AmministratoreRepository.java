@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @see Amministratore
  */
-public interface UtenteRepository extends JpaRepository<Amministratore, Long> {
+public interface AmministratoreRepository extends JpaRepository<Amministratore, Long> {
 
 }

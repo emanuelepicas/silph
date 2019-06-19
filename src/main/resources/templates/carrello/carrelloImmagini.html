@@ -12,7 +12,7 @@
 </div>
 <br />
 
-<div th:each="foto : ${foto}">
+<div th:each="foto : ${fotografie}">
     <div class="panel-heading">
         <h1>
             <a th:text="${foto.nome}"
@@ -20,7 +20,7 @@
         </h1>
     </div>
     <div>
-        <a th:href="@{'/shoppingCart/rimuoviFotografia/{id}'(id=${fotografia.id})}" ><button
+        <a th:href="@{'/utente/shoppingCart/rimuoviFotografia/{id}'(id=${foto.id})}" ><button
                 type="button" class="btn btn-primary" th:text="Remove">Rimuovi</button>
         </a>
     </div>
@@ -28,7 +28,7 @@
 </div>
 
 <div>
-    <a th:href="@{'/shoppingCart/checkout'}" class="col-md-1">
+    <a th:href="@{'/utente/shoppingCart/checkout'}" class="col-md-1">
         <button type="button" th:text="Checkout">Checkout</button>
     </a>
 </div>

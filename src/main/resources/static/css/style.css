@@ -1,21 +1,71 @@
 body {
-    background-image: url("../image/sfondoblu.jpg");
+    background-image: url("../images/sfondoblu.jpg");
 }
-h4{
+
+h4 {
     color: whitesmoke;
     font-size: xx-large;
 }
-a{
+
+a {
     color: whitesmoke;
+    font-size: large;
 }
 
 a:hover {
     color: black;
-    text-decoration: underline;
-    font-size: larger;
+    font-size:large;
 }
 
-span{    color: whitesmoke;
+span {
+    color: whitesmoke;
     font-size: xx-large;
 
+}
+
+i {
+    color: whitesmoke;
+    font-size: xx-large;
+}
+
+
+
+.invalid_message {
+    font-family: cursive;
+    color: red;
+    font-size: small;
+    font-style: italic;
+}
+
+.ok_message {
+    font-family: cursive;
+    color: green;
+    font-style: bold, italic;
+}
+
+.notFound_message {
+    font-family: cursive;
+    color: green;
+    font-style: italic;
+}
+
+.notFound_suggest {
+    font-family: cursive;
+    color: blue;
+    font-style: italic;
+}
+
+
+.single_image {
+    width: 40%;
+    height: 40%;
+    padding-left: 200px;
+}
+.galleria_immagine {
+    display: flex;
+    flex-direction: column;
+    columns: 3;
+    width:80%;
+    height:80%;
+    padding-left: 200px;
 }

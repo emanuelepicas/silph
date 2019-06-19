@@ -46,7 +46,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // authorization paragraph: we are going to define here WHO can access WHAT pages
                 .authorizeRequests()
 
-                .antMatchers("/css/**", "/js/**", "/image/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
 
 
                 .antMatchers("/utente", "/utente/**").permitAll()

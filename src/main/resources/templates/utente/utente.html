@@ -12,6 +12,9 @@
 <a href="/utente/fotografi">Guarda i fotografi</a>
 </div>
 <div>
+     <a th:href="@{/utente/gallery}">Visualizza la galleria</a>
+</div>
+<div>
 
     <form th:action="@{/utente/search}" th:object="${search_query}" method="post" class="searchbar">
         <input th:field="*{query}" type="text" placeholder="Search...">

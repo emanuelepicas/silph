@@ -42,5 +42,9 @@ public class FotoService {
     public Foto cercaPerNome(String nome) {
         return this.fotoRepository.findByNome(nome);
     }
+    @Transactional
+    public List<Foto> cercaPerFotografo(Fotografo fotografo) {
+        return (List<Foto>)this.fotoRepository.findByFotografo(fotografo);
+    }
 
 }

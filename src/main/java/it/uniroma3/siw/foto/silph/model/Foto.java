@@ -1,7 +1,7 @@
 package it.uniroma3.siw.foto.silph.model;
 
 import javax.persistence.*;
-import java.util.HashMap;
+
 
 @Entity
 public class Foto {
