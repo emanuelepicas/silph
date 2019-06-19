@@ -1,6 +1,10 @@
 body {
     background-image: url("../images/sfondoblu.jpg");
 }
+td{
+    color: whitesmoke;
+    font-size: large;
+}
 
 h4 {
     color: whitesmoke;

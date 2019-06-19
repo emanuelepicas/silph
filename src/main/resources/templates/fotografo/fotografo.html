@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html lang="it" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Portale Silh</title>
-    <link rel="stylesheet" href="/css/fotografoCss.css"/>
+    <meta charset="UTF-8">
+
+    <title>FotografoPage</title>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-<div>
-    <h4>Fotografo</h4>
-    <div>
-        Nome: <span th:text="${fotografo.nome}">Andrea</span>
-    </div>
-    <div>
-        Cognome: <span th:text="${fotografo.cognome}">Speranza</span>
-    </div>
 
-</div>
-<h4>Album</h4>
 
-<a href="/admin/albumDefault">Album di default</a>
+<div><h4>Fotografo</h4></div>
+<table th:object="${fotografo}">
+    <tr>
+        <td>Nome:</td>
+        <td th:text="*{nome}">nome_fotografo</td>
+    </tr>
+    <tr>
+        <td>Cognome:</td>
+        <td th:text="*{cognome}">cognome_fotografo</td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{'/albumsPerFotografo/'+*{id}}" th:text="Album">album_fotografo</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{'/fotografiePerFotografo/'+*{id}}" th:text="Fotografie">fotografie_fotografo</a>
+        </td>
+    </tr>
+</table>
 <h5><a href="/admin/welcome">Torna alla home</a></h5>
 </body>
 </html>

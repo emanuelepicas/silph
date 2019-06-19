@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
 
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-<div><h3 class="title">Album</h3></div>
+<div><h4>Album</h4></div>
 <table th:object="${album}">
     <tr>
         <td>Nome:</td>
@@ -19,9 +20,10 @@
     </tr>
     <tr>
         <td>
-            <a th:href="@{'/fotografieDaAlbum/'+*{id}}" th:text="Fotografie">fotografie_album</a>
+            <a th:href="@{'/utente/fotografieDaAlbum/'+*{id}}" th:text="Fotografie">fotografie_album</a>
         </td>
     </tr>
 </table>
+<h5><a href="/admin/welcome">Torna alla home</a></h5>
 </body>
 </html>

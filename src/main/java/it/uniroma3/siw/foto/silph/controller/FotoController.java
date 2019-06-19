@@ -127,6 +127,7 @@ public class FotoController {
         return "foto/fotografie";
     }
 
+
     protected List<String> getPaths(List<Foto> fotografie) {
         List<String> file_paths = new LinkedList<>();
         String temp_filepath = "";
