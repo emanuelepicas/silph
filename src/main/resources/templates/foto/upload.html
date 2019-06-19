@@ -1,10 +1,11 @@
-<html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
 <body>
 
 <h1>Spring Boot - File Upload</h1>
 
-<form method="POST" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="file" /><br />
+<form method="POST" action="/admin/upload" enctype="multipart/form-data" >
+     <input type="file" name="file" /><br />
     <br /> <input type="submit" value="Submit" />
 </form>
 

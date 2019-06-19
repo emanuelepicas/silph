@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+div><h3 class="title">Album</h3></div>
+<table th:object="${album}">
+    <tr>
+        <td>Nome: </td>
+        <td th:text="*{nome}">nome_album</td>
+    </tr>
+    <tr>
+        <td>Registrazione: </td>
+        <td th:text="${#temporals.format(album.dataRegistrazione, 'dd-MM-yyyy')}">data_album</td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{'/fotografieDaAlbum/'+*{id}}" th:text="Fotografie">fotografie_album</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

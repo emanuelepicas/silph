@@ -1,6 +1,6 @@
 package it.uniroma3.siw.foto.silph;
 
-import it.uniroma3.siw.foto.silph.model.Utente;
+import it.uniroma3.siw.foto.silph.model.Amministratore;
 import it.uniroma3.siw.foto.silph.storage.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -31,12 +31,12 @@ public class DBPopulation implements ApplicationRunner {
 
         System.out.println("Storing users...");
 
-        Utente amministratore1 = new Utente(1L, "Emanuele", "Picariello", "emanuele", null, "ADMIN");
+        Amministratore amministratore1 = new Amministratore(1L, "Emanuele", "Picariello", "emanuele", null, "ADMIN");
         String adminPassword = new BCryptPasswordEncoder().encode("picariello");
         amministratore1.setPassword(adminPassword);
         this.utenteRepository.save(amministratore1);
 
-        Utente amministratore2 = new Utente(2L, "Riccardo", "Spada", "riccardo", null, "ADMIN");
+        Amministratore amministratore2 = new Amministratore(2L, "Riccardo", "Spada", "riccardo", null, "ADMIN");
         String guestPassword = new BCryptPasswordEncoder().encode("spada");
         amministratore2.setPassword(guestPassword);
         this.utenteRepository.save(amministratore2);

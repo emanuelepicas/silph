@@ -1,57 +1,118 @@
 package it.uniroma3.siw.foto.silph.model;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.LinkedList;
+import java.util.List;
+
 
 import javax.persistence.*;
 
 @Entity
 public class Fotografo {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	@Column(nullable = false)
-	private String nome;
-	private String cognome;
-	
-	@OneToMany(mappedBy="fotografo", cascade = CascadeType.ALL)
-	@MapKey(name="id")
-	private Map<Long,Album> album;
+    @Column(nullable = false)
+    private String nome;
+    @Column(nullable = false)
+    private String cognome;
 
-	public Fotografo(String nome, String cognome, String email) {
-		this.nome = nome;
-		this.cognome = cognome;
-		this.album= new HashMap<>();
-		Album generale = new Album("Tutte le foto", this);
-		this.album.put(generale.getId(), generale);
-	}
-	public Fotografo(){
+    @OneToMany(mappedBy = "fotografo",
+            cascade = CascadeType.REMOVE)
+    private List<Foto> foto;
+    @OneToMany(cascade = CascadeType.REMOVE)
+    private List<Album> albums;
 
-	}
+    public Fotografo(String nome, String cognome) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.foto = new LinkedList<>();
+        this.albums = new LinkedList<>();
+    }
 
+    public Fotografo() {
+        this.foto = new LinkedList<>();
+        this.albums = new LinkedList<>();
+    }
 
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
+    /* getters - setters */
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return this.cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public List<Foto> getFoto() {
+        return this.foto;
+    }
+
+    public void setFoto(List<Foto> foto) {
+        this.foto = foto;
+    }
+
+    public List<Album> getAlbums() {
+        return this.albums;
+    }
+
+    public void setAlbums(List<Album> listaAlbums) {
+        this.albums = listaAlbums;
+    }
+
+    public boolean addAlbum(Album album) {
+        return this.albums.add(album);
+    }
+
+    public boolean addFoto(Foto foto) {
+        return this.foto.add(foto);
+    }
+
+
+    /* equals - hashCode - toString */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Fotografo other = (Fotografo) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Fotografo [id = " + id + ", nome = " + nome + ", cognome = " + cognome + ", n. album=" + albums.size() + "]";
+    }
 }

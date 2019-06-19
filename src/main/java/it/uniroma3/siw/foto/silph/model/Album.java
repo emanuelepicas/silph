@@ -1,53 +1,117 @@
 package it.uniroma3.siw.foto.silph.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.*;
 
-
 @Entity
+@NamedQuery(name = "findAllAlbums", query = "SELECT a FROM Album a")
 public class Album {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	@Column(nullable = false)
-	private String nome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = false)
+    private String nome;
+    private LocalDate dataRegistrazione;
 
-	
-	
-	
-	@ManyToOne
-	private Fotografo fotografo;
-	
-	@OneToMany(mappedBy="album")
-	@MapKey(name="id")
-	private Map<Long,Foto> foto;
 
-	public Album(){}
+    @OneToMany
+    private List<Foto> fotografie;
 
-	public Album(String nome, Fotografo fotografo) {
-		this.nome = nome;
-		this.fotografo = fotografo;
-		this.foto = new HashMap<>();
 
-	}
+    @ManyToOne
+    private Fotografo fotografo;
 
-	public Long getId() {
-		return id;
-	}
+    public Album(String nome) {
+        this.nome = nome;
+        this.dataRegistrazione = LocalDate.now();
+        this.fotografie = new LinkedList<>();
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public Album() {
+        this.dataRegistrazione = LocalDate.now();
+        this.fotografie = new LinkedList<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    /* getters - setters */
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDate getDataRegistrazione() {
+        return this.dataRegistrazione;
+    }
+
+    public void setDataRegistrazione(LocalDate data) {
+        this.dataRegistrazione = data;
+    }
+
+    public List<Foto> getFotografie() {
+        return this.fotografie;
+    }
+
+    public void setFotografie(List<Foto> listaFotografie) {
+        this.fotografie = listaFotografie;
+    }
+
+    public Fotografo getFotografo() {
+        return fotografo;
+    }
+
+    public void setFotografo(Fotografo fotografo) {
+        this.fotografo = fotografo;
+    }
+
+    public boolean addFotografia(Foto fotografia) {
+        return this.fotografie.add(fotografia);
+    }
+
+
+    /* equals - hashCode - toString */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Album other = (Album) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Album [id = " + id + ", nome = " + nome + ", data di registrazione = " + dataRegistrazione + "]";
+    }
+
 }
-
-

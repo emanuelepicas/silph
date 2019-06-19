@@ -32,7 +32,7 @@ public class AlbumController {
      * @return albumDefault
      */
 
-    @RequestMapping(value = "/admin/albumDefault", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/admin/albumDefault", method = RequestMethod.GET)
     public String getAlbumDefault(@ModelAttribute("albumDefault") Fotografo fotografo, Long id, Model model) {
         {
             model.addAttribute("albumDefault", this.albumService.albumDefault(fotografo.getNome()));
@@ -45,5 +45,5 @@ public class AlbumController {
         {
             model.addAttribute("album", this.albumService.albumPerId(id));
         }
-    }
+    }*/
 }

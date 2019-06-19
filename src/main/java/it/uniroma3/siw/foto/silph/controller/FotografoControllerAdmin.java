@@ -34,7 +34,6 @@ public class FotografoControllerAdmin {
                                Model model, BindingResult bindingResult) {
         this.fotografoValidator.validate(fotografo, bindingResult);
         if (!bindingResult.hasErrors()) {
-            Album a = new Album("default", fotografo);
             this.fotografoService.inserisci(fotografo);
             model.addAttribute("fotografi", this.fotografoService.tutti());
             return "fotografo/fotografi";

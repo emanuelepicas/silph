@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Carrello</title>
+</head>
+<body>
+<div>
+    Torna alla <a th:href="@{/utente/gallery}" th:text="Galleria"></a>
+</div>
+<br />
+
+<div th:each="foto : ${foto}">
+    <div class="panel-heading">
+        <h1>
+            <a th:text="${foto.nome}"
+               th:href="@{'/utente/foto/' + ${foto.id}}">Title</a>
+        </h1>
+    </div>
+    <div>
+        <a th:href="@{'/shoppingCart/rimuoviFotografia/{id}'(id=${fotografia.id})}" ><button
+                type="button" class="btn btn-primary" th:text="Remove">Rimuovi</button>
+        </a>
+    </div>
+    <br></br>
+</div>
+
+<div>
+    <a th:href="@{'/shoppingCart/checkout'}" class="col-md-1">
+        <button type="button" th:text="Checkout">Checkout</button>
+    </a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/utenteCss.css" />
+    <title>ErrorPage</title>
+</head>
+<body>
+<h4>something went wrong...</h4>
+<br/>
+<div th:text="${erroreIO}">errore_IO</div>
+<div th:text="${erroreGenerico}">messaggio_errore_generico</div>
+</body>
+</html>

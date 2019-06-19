@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 /**
  * Per ogni inserimento fatto dal Funzionario Silph
  * questa classe registrerà un fotogrsfo nel database
- * 
+ *
  */
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,20 +19,24 @@ public class FotografoService {
     @Autowired
     private FotografoRepository fotografoRepository;
 
+    @Transactional
+    public Fotografo fotografoPerId(Long id) {
+        return this.fotografoRepository.findById(id).get();
+    }
 
-public Fotografo fotografoPerId(Long id){
-    return this.fotografoRepository.findById(id).get();
-}
-
-@Transactional
-public Fotografo inserisci(Fotografo fotografo){
+    @Transactional
+    public Fotografo inserisci(Fotografo fotografo) {
         return fotografoRepository.save(fotografo);
 
-}
+    }
 
-@Transactional
-public List<Fotografo> tutti(){
+    @Transactional
+    public List<Fotografo> tutti() {
         return (List<Fotografo>) this.fotografoRepository.findAll();
-}
+    }
 
+    @Transactional
+    public Fotografo cercaPerNome(String nome) {
+        return this.fotografoRepository.findByNome(nome);
+    }
 }

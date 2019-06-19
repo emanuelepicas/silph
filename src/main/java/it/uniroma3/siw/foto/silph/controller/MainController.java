@@ -1,11 +1,11 @@
 package it.uniroma3.siw.foto.silph.controller;
-
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 /**
  * The MainController is a Spring Boot Controller to handle
@@ -24,7 +24,7 @@ public class MainController {
      *
      * @return the name of the home view
      */
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index(Model model) {
         return "home";
     }
@@ -35,7 +35,7 @@ public class MainController {
      *
      * @return the name of the welcome view
      */
-    @RequestMapping(value = { "/welcome" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();     // get first authority
@@ -51,7 +51,7 @@ public class MainController {
      *
      * @return the name of the admin view
      */
-    @RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/admin"}, method = RequestMethod.GET)
     public String admin(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
@@ -60,4 +60,5 @@ public class MainController {
 
         return "admin";
     }
+
 }

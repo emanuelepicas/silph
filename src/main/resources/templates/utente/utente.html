@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="ISO-8859-1">
     <title>Portale Silh</title>
@@ -10,5 +11,23 @@
 <div>
 <a href="/utente/fotografi">Guarda i fotografi</a>
 </div>
+<div>
+
+    <form th:action="@{/utente/search}" th:object="${search_query}" method="post" class="searchbar">
+        <input th:field="*{query}" type="text" placeholder="Search...">
+        <select th:field="*{type}">
+            <optgroup>
+                <option title="foto" value="Foto">Foto</option>
+                <option title="fotografo" value="Fotografo">Fotografo</option>
+                <option title="album" value="Album">Album</option>
+            </optgroup>
+        </select>
+        <button type="submit">Cerca</button>
+
+        <br/>
+        <span class="invalid_message" th:if="${#fields.hasErrors('query')}" th:errors="*{query}"></span>
+    </form>
+</div>
+
 </body>
 </html>
