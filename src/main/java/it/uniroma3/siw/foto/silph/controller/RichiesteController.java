@@ -1,5 +1,6 @@
 package it.uniroma3.siw.foto.silph.controller;
 
+import it.uniroma3.siw.foto.silph.model.SerchQuery;
 import it.uniroma3.siw.foto.silph.service.RichiestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RichiesteController {
     @Autowired
     RichiestaService richiestaService;
+
 
 
 
@@ -30,4 +32,6 @@ public class RichiesteController {
         model.addAttribute("richieste",this.richiestaService.tutte());
         return "richiesta/listaRichieste";
     }
+
+
 }

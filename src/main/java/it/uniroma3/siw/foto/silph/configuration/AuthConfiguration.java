@@ -50,6 +50,12 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/utente", "/utente/**").permitAll()
 
+                .antMatchers("/album/{id}","/album/**").permitAll()
+
+                .antMatchers("/fotografo","/fotografo/**","/fotografo/{id}").permitAll()
+
+                .antMatchers("/albumsPerFotografo/{id_fotografo}","/albumsPerFotografo/**").permitAll()
+
                 .antMatchers("/fotografiePerFotografo/", "/fotografiePerFotografo/**").permitAll()
 
                 // everyone (authenticated or not) can access the home page

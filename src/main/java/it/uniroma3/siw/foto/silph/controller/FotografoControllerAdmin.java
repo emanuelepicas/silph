@@ -40,7 +40,7 @@ public class FotografoControllerAdmin {
         }
     }
 
-    @RequestMapping(value = "/admin/fotografo/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
     public String getFotografo(@PathVariable("id") Long id, Model model) {
         if (id != null) {
             model.addAttribute("fotografo", this.fotografoService.fotografoPerId(id));

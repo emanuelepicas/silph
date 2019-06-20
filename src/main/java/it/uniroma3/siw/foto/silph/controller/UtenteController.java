@@ -61,6 +61,7 @@ public class UtenteController {
         model.addAttribute("search_query", new SerchQuery());
         return "utente/utente";
     }
+
     @RequestMapping(value={"/utente/search","/admin/search"},method= RequestMethod.POST)
     public String searchMethod(@Valid @ModelAttribute("search_query") SerchQuery searchQuery,
                                Model model, BindingResult bindingResult) {
