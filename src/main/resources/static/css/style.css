@@ -43,19 +43,19 @@ i {
 
 .ok_message {
     font-family: cursive;
-    color: green;
+    color: whitesmoke;
     font-style: bold, italic;
 }
 
 .notFound_message {
     font-family: cursive;
-    color: green;
+    color: whitesmoke;
     font-style: italic;
 }
 
 .notFound_suggest {
     font-family: cursive;
-    color: blue;
+    color: whitesmoke;
     font-style: italic;
 }
 

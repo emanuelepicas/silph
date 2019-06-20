@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
 
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-<div><h3 class="ok_message">Fotografia trovata!</h3></div>
+<div><h4>Fotografia trovata!</h4></div>
 <div th:text="'Nome: '+${fotografia.nome}">foto_nome</div>
 <div>
     Fotografo: <a th:href="@{'/fotografo/'+${fotografia.fotografo.id}}" th:text="${fotografia.fotografo.nome}">foto_fotografo</a>
@@ -18,5 +19,12 @@
 <br/>
 
 <img th:src="@{${fotoPath}}" class="single_image">
+<form style="float: left; padding-top: 40px; padding-left: 60px;"
+      th:action="@{/utente/shoppingCart/aggiungiAlCarrelloDalleFotografie}">
+    <input style="display: none;" type="text" th:value="${fotoPath}" name="fotoPath">
+    <button type="submit">
+        Aggiungi immagine
+    </button>
+</form>
 </body>
 </html>

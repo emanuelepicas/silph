@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>Fotografie</title>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-<div><h3 class="title">Fotografie</h3></div>
+<div><h4>Fotografie</h4></div>
 <div th:each="fotoPath : ${fotografie_paths}">
     <img class="gallery_image" th:src="@{${fotoPath}}">
 

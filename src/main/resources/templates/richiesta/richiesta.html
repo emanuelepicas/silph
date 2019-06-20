@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Richiesta</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<div><h4>Richiesta</h4></div>
+
+<table th:object="${richiesta}">
+    <tr>
+        <td>Nome:</td>
+        <td th:text="*{nome}">nome_fotografo</td>
+    </tr>
+    <tr>
+        <td>Cognome:</td>
+        <td th:text="*{cognome}">cognome_fotografo</td>
+    </tr>
+
+
+</table>
+<h5><a href="/admin/welcome">Torna alla home</a></h5>
+</body>
+</html>

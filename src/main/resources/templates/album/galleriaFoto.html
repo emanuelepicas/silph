@@ -3,26 +3,31 @@
       xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
     <title>Galleria Fotografie</title>
 </head>
 <body>
-<div class="title">
+<div>
     <h4>Fotografie della Silph</h4>
-    <a  th:href="@{/utente/shoppingCart}">carrello immagini</a>
+</div>
+<div>
+    <a href="/utente">Visualizza la home</a>
+</div>
+<div>
+    <a th:href="@{/utente/shoppingCart}">Carrello immagini</a>
 </div>
 <div>
     <i>Aggiungi le immagini che vuoi nel carello</i>
 </div>
-<br />
-<br />
+<br/>
+<br/>
 
 <div th:each="fotoPath : ${files_galleria}">
-    <img class="galleria_imagine" th:src="@{${fotoPath}}">
+    <img class="gallery_image" th:src="@{${fotoPath}}">
 
     <form style="float: left; padding-top: 40px; padding-left: 60px;"
           th:action="@{/utente/shoppingCart/aggiungiAlCarrelloDallaGallery}">
-        <input style="display: none;"  type="text" th:value="${fotoPath}" name="fotoPath">
+        <input style="display: none;" type="text" th:value="${fotoPath}" name="fotoPath">
         <button type="submit">Aggiungi immagine</button>
     </form>
 </div>

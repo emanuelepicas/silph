@@ -14,6 +14,8 @@ public interface ShoppingCartRepository {
 
     List<Foto> getFotografieNelCarrello();
 
+   void rimuoviTutteLeFotografie();
+
 
 
 }

@@ -15,3 +15,38 @@ a:hover {
     text-decoration: underline;
     font-size: larger;
 }
+.invalid_message {
+    font-family: cursive;
+    color: red;
+    font-size: small;
+    font-style: italic;
+}
+
+.ok_message {
+    font-family: cursive;
+    color: green;
+    font-style: bold,italic;
+}
+
+.notFound_message {
+    font-family: cursive;
+    color: green;
+    font-style: italic;
+}
+
+.notFound_suggest {
+    font-family: cursive;
+    color: blue;
+    font-style: italic;
+}
+
+.body {
+    font-family: cursive;
+}
+
+.searchbar input {
+    float: center;
+}
+.searchbar select {
+    float: left;
+}

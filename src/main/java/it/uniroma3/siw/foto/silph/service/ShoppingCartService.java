@@ -31,6 +31,9 @@ public class ShoppingCartService implements ShoppingCartRepository {
     public void aggiungiFotografia(Foto foto) {
         fotos.add(foto);
     }
+    @Override
+    public void rimuoviTutteLeFotografie() { fotos.clear();
+    }
 
 
     @Override

@@ -9,14 +9,32 @@ public class Richiesta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String descrizione;
+    @Column(nullable = false)
+    private String nome;
+    @Column(nullable = false)
+    private String cognome;
     @ManyToMany
     private List<Foto> foto;
     @ManyToOne
     private Utente utente;
 
-    private Richiesta() {
+    public Richiesta() {
 
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
     public Long getId() {
@@ -27,13 +45,6 @@ public class Richiesta {
         this.id = id;
     }
 
-    public String getDescrizione() {
-        return descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
 
     public List<Foto> getFoto() {
         return foto;

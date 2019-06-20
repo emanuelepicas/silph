@@ -1,13 +1,7 @@
 package it.uniroma3.siw.foto.silph.controller;
 
-import it.uniroma3.siw.foto.silph.model.Album;
-import it.uniroma3.siw.foto.silph.model.Foto;
-import it.uniroma3.siw.foto.silph.model.Fotografo;
-import it.uniroma3.siw.foto.silph.model.SerchQuery;
-import it.uniroma3.siw.foto.silph.service.AlbumService;
-import it.uniroma3.siw.foto.silph.service.FotoService;
-import it.uniroma3.siw.foto.silph.service.FotografoService;
-import it.uniroma3.siw.foto.silph.service.SearchQueryValidator;
+import it.uniroma3.siw.foto.silph.model.*;
+import it.uniroma3.siw.foto.silph.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +22,32 @@ public class UtenteController {
     @Autowired
     private FotografoService fotografoService;
     @Autowired
+    private RichiestaValidator richiestaValidator;
+    @Autowired
     private AlbumService albumService;
+    @Autowired
+    RichiestaService richiestaService;
+    @Autowired
+    ShoppingCartService shoppingCartService;
+
+    @RequestMapping("/utente/addRichiesta")
+    public String addRichiesta(Model model) {
+        this.shoppingCartService.rimuoviTutteLeFotografie();
+        model.addAttribute("richiesta", new Richiesta());
+        return "richiesta/richiestaForm";
+    }
+    @RequestMapping(value = "/utente/richiesta", method = RequestMethod.POST)
+    public String newRichiesta(@Valid @ModelAttribute("richiesta") Richiesta richiesta,
+                               Model model, BindingResult bindingResult) {
+        this.richiestaValidator.validate(richiesta, bindingResult);
+        if (!bindingResult.hasErrors()) {
+            richiesta.setFoto(shoppingCartService.getFotografieNelCarrello());
+            this.richiestaService.inserisci(richiesta);
+            return "richiesta/richiestaConSuccesso";
+        } else {
+            return "richiesta/richiestaForm";
+        }
+    }
 
 
     @GetMapping("/utente/fotografi")
@@ -42,7 +61,7 @@ public class UtenteController {
         model.addAttribute("search_query", new SerchQuery());
         return "utente/utente";
     }
-    @RequestMapping(value="/utente/search",method= RequestMethod.POST)
+    @RequestMapping(value={"/utente/search","/admin/search"},method= RequestMethod.POST)
     public String searchMethod(@Valid @ModelAttribute("search_query") SerchQuery searchQuery,
                                Model model, BindingResult bindingResult) {
         String nextPage = "utente/utente";
